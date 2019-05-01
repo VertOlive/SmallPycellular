@@ -12,7 +12,6 @@ parser.add_argument("-r", "--random",
 args = parser.parse_args()
 
 WOLFRAMRULE = np.uint8(args.rule)
-RESOLUTIONSIZE = 4
 IMAGESIZE = 100
 
 def convertToPng(numpyList):
@@ -24,7 +23,6 @@ def main():
     ## Unpack bits rules.
     rulesList = np.unpackbits(WOLFRAMRULE)
     print(rulesList)
-    rulesList= np.flip(rulesList)
     ## Make blank cellular field buffer..
     cellularField = np.zeros((IMAGESIZE, IMAGESIZE), dtype=bool)
 
@@ -39,7 +37,7 @@ def main():
     for y in range(0, IMAGESIZE-1):
         for x in range(1, IMAGESIZE-1):
             value = int(cellularField[y][x-1])*4 + int(cellularField[y][x])*2 + int(cellularField[y][x+1])*1
-            if(rulesList[value] == 1):
+            if(rulesList[7 - value] == 1):
                 cellularField[y+1][x] = True
 
     ## Create the image from the bufferd cellularField.
