@@ -12,12 +12,12 @@ parser.add_argument("-r", "--random",
 args = parser.parse_args()
 
 WOLFRAMRULE = np.uint8(args.rule)
-IMAGESIZE = 100
+IMAGESIZE = 256
 
 def convertToPng(numpyList):
     size = numpyList.shape[::-1]
     databytes = np.packbits(numpyList, axis=1)
-    Image.frombytes(mode='1', size=size, data=databytes).save("Cellular.png")
+    Image.frombytes(mode='1', size=size,data=databytes).save("Cellular"+str(WOLFRAMRULE)+".png")
 
 def main():
     ## Unpack bits rules.
