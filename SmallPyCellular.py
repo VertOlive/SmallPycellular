@@ -2,6 +2,8 @@ import numpy as np
 import argparse
 from PIL import Image
 
+# Test Git
+
 parser = argparse.ArgumentParser()
 parser.add_argument("rule",
                     type=np.uint8,
